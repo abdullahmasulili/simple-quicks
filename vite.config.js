@@ -12,7 +12,7 @@ export default defineConfig({
     vueJsx(),
     Fonts({
       google: {
-        name: 'lato',
+        name: 'Lato',
         styles: 'wght@100;300;400;700;900'
       }
     })

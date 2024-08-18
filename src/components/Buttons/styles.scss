@@ -1,0 +1,124 @@
+@import '@/assets/variables.scss';
+
+.fab__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  transition: all 200ms ease-in-out;
+
+  .fab__label {
+    margin-bottom: 0.5rem;
+  }
+
+  &:not(.main__fab) {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  &:is(.is-active) .btn--fab:is(.color--indicator-1) {
+    background-color: $indicator-color-1;
+    color: $secondary-color;
+  }
+
+  &:is(.is-active) .btn--fab:is(.color--indicator-2) {
+    background-color: $indicator-color-2;
+    color: $secondary-color;
+  }
+
+  &:is(.is-active) .btn--fab:is(.color--indicator-3) {
+    background-color: $indicator-color-3;
+    color: $secondary-color;
+  }
+
+  &:is(.is-active) .btn--fab:is(.color--indicator-4) {
+    background-color: $indicator-color-4;
+    color: $secondary-color;
+  }
+}
+
+.btn {
+  color: $secondary-color;
+  padding-inline: 8px;
+  padding-block: 16px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 12px;
+  outline: unset;
+  border: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: $primary-color-1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0.2;
+    }
+  }
+
+  &.btn--fab {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    font-size: 18px;
+    height: 60px;
+    font-size: 32px;
+
+    &.color--indicator-1 {
+      color: $indicator-color-1;
+      background-color: $secondary-color;
+    }
+
+    &.color--indicator-2 {
+      color: $indicator-color-2;
+      background-color: $secondary-color;
+    }
+
+    &.color--indicator-3 {
+      color: $indicator-color-3;
+      background-color: $secondary-color;
+    }
+
+    &.color--indicator-4 {
+      color: $indicator-color-4;
+      background-color: $secondary-color;
+    }
+  }
+
+  &.color--primary-1 {
+    background-color: $primary-color-1;
+    color: $secondary-color;
+  }
+
+  &.color--primary-2 {
+    background-color: $primary-color-2;
+    color: $secondary-color;
+  }
+
+  &.color--primary-3 {
+    background-color: $primary-color-3;
+    color: $secondary-color;
+  }
+
+  &.color--primary-4 {
+    background-color: $primary-color-4;
+    color: $secondary-color;
+  }
+}
