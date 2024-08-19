@@ -1,13 +1,24 @@
 @import '@/assets/variables.scss';
 
-.fab__wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.fab__container {
   position: absolute;
   right: 20px;
   bottom: 20px;
   transition: all 200ms ease-in-out;
+
+  .fab__wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .quick-closer {
+      position: absolute;
+      bottom: 0;
+      left: -15px;
+      z-index: -1;
+    }
+  }
 
   .fab__label {
     margin-bottom: 0.5rem;
@@ -53,9 +64,9 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
   background-color: $primary-color-1;
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 
   &::before {
     content: '';
@@ -66,6 +77,7 @@
     right: 0;
     background-color: #fff;
     opacity: 0;
+    border-radius: 50%;
     transition: opacity 200ms ease-in-out;
   }
 
