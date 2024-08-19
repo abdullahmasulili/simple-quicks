@@ -1,6 +1,7 @@
 @import './base.css';
 
 #app {
+  background-color: #333333;
   max-width: 1280px;
   color: #f2f2f2;
 }

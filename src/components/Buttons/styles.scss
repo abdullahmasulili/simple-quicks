@@ -55,6 +55,7 @@
   position: relative;
   overflow: hidden;
   background-color: $primary-color-1;
+  cursor: pointer;
 
   &::before {
     content: '';
