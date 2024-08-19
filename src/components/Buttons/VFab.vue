@@ -41,11 +41,13 @@ const emits = defineEmits(['click', 'close'])
       <button class="btn btn--fab" :class="`color--${color}`" @click="$emit('click')">
         <Icon :icon="icon" />
       </button>
-      <button
-        v-if="fabType !== 'toggler' && isActive"
-        class="btn btn--fab color--primary-2 quick-closer"
-        @click="$emit('close')"
-      ></button>
+      <Transition name="slide-fade">
+        <button
+          v-if="fabType !== 'toggler' && isActive"
+          class="btn btn--fab color--primary-2 quick-closer"
+          @click="$emit('close')"
+        ></button>
+      </Transition>
     </div>
   </div>
 </template>
