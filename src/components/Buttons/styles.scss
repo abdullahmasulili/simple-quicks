@@ -1,34 +1,53 @@
 @import '@/assets/variables.scss';
 
-.fab__container {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
+.fab__wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   transition: all 200ms ease-in-out;
 
-  .fab__wrap {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &:not(.quick-closer) {
+    z-index: 1;
+  }
 
-    .quick-closer {
-      position: absolute;
-      bottom: 0;
-      left: -15px;
-      z-index: -1;
-      // transform: translateX(-20px);
-    }
+  .quick-closer {
+    position: absolute;
+    bottom: 0;
+    left: -15px;
+    z-index: -1;
   }
 
   .fab__label {
-    margin-bottom: 0.5rem;
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
   }
 
   &:not(.main__fab) {
+    position: absolute;
     opacity: 0;
-    pointer-events: none;
     visibility: hidden;
+    pointer-events: none;
+  }
+
+  &:is(.is-active) .btn--fab {
+    height: 68px;
+  }
+
+  &:is(.main__fab):is(.reveal-item) {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+
+    & ~ .fab__wrap:not(.main__fab) {
+      pointer-events: all;
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &:is(.is-active) .btn--fab:is(.color--indicator-1) {
@@ -94,6 +113,10 @@
     font-size: 18px;
     height: 60px;
     font-size: 32px;
+
+    &.fab--toggler {
+      height: 68px;
+    }
 
     &.color--indicator-1 {
       color: $indicator-color-1;

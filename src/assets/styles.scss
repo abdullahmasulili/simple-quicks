@@ -20,3 +20,14 @@
 .slide-fade-leave-to {
   transform: translateX(15px);
 }
+
+.quicks {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 20px;
+  flex-direction: row-reverse;
+}
