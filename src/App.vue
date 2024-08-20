@@ -47,6 +47,9 @@ const showQuicks = ref(false)
 
 function handleActiveQuicks(quicksName) {
   activeQuicks.value = quicksName
+
+  const quicksToggler = document.querySelector('.fab__wrap:is(.main__fab)')
+  quicksToggler.classList.toggle('soft-hide')
 }
 
 function handleRevealQuicks() {
