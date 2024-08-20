@@ -28,7 +28,6 @@
   }
 
   &:not(.main__fab) {
-    position: absolute;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -42,12 +41,6 @@
     visibility: visible;
     pointer-events: all;
     opacity: 1;
-
-    & ~ .fab__wrap:not(.main__fab) {
-      pointer-events: all;
-      visibility: visible;
-      opacity: 1;
-    }
   }
 
   &:is(.is-active) .btn--fab:is(.color--indicator-1) {

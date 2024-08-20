@@ -40,32 +40,28 @@ import VFab from '@/components/Buttons/VFab.vue'
 
 import './assets/styles.scss'
 
-import { resolveQuicksReveal } from '@/utilities/quicks'
+import { resolveHideQuicks, resolveRevealQuicks } from '@/utilities/quicks'
 
 const activeQuicks = ref(null)
 const showQuicks = ref(false)
 
 function handleActiveQuicks(quicksName) {
   activeQuicks.value = quicksName
-
-  if (!quicksName) {
-    showQuicks.value = false
-  }
 }
 
 function handleRevealQuicks() {
-  showQuicks.value = !showQuicks.value
-
   const quicks = document.querySelectorAll('.fab__wrap:not(.main__fab)')
 
-  quicks.forEach((item, index) => {
-    item.style.position = 'relative'
-    setTimeout(
-      () => {
-        item.style.marginRight = '15px'
-      },
-      50 * (index + 1)
-    )
-  })
+  if (showQuicks.value) {
+    resolveHideQuicks(quicks)
+
+    activeQuicks.value = null
+
+    return (showQuicks.value = false)
+  }
+
+  showQuicks.value = true
+
+  resolveRevealQuicks(quicks)
 }
 </script>
