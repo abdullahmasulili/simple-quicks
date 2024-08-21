@@ -16,7 +16,7 @@
         :class="activeQuicks === 'inbox' ? 'is-active' : ''"
         :is-active="activeQuicks === 'inbox'"
         @click="handleActiveQuicks('inbox')"
-        @close="handleActiveQuicks(null)"
+        @close="handleCloseQuicks()"
       />
       <VFab
         icon="material-symbols:chrome-reader-mode-outline"
@@ -27,7 +27,29 @@
         :class="activeQuicks === 'task' ? 'is-active' : ''"
         :is-active="activeQuicks === 'task'"
         @click="handleActiveQuicks('task')"
-        @close="handleActiveQuicks(null)"
+        @close="handleCloseQuicks()"
+      />
+      <VFab
+        icon="material-symbols:person-outline"
+        color="indicator-3"
+        label="Contact"
+        fab-type="item"
+        :hide-label="activeQuicks"
+        :class="activeQuicks === 'contact' ? 'is-active' : ''"
+        :is-active="activeQuicks === 'contact'"
+        @click="handleActiveQuicks('contact')"
+        @close="handleCloseQuicks()"
+      />
+      <VFab
+        icon="material-symbols:group"
+        color="indicator-4"
+        label="Group"
+        fab-type="item"
+        :hide-label="activeQuicks"
+        :class="activeQuicks === 'group' ? 'is-active' : ''"
+        :is-active="activeQuicks === 'group'"
+        @click="handleActiveQuicks('group')"
+        @close="handleCloseQuicks()"
       />
     </div>
   </main>
@@ -53,9 +75,50 @@ function handleActiveQuicks(quicksName) {
   activeQuicks.value = quicksName
 
   const quicks = document.querySelectorAll('.fab__wrap:not(.main__fab)')
+  const activeQuicksIndex = resolveActiveQuicksIndex(quicks)
+  let offset = 0
 
   quicks.forEach((item, index) => {
-    console.log(item.classList.contains('.is-active'))
+    const quicksLabel = item.dataset.quicksLabel.toLowerCase()
+
+    if (quicksLabel === activeQuicks.value) {
+      offset = calculateQuicksItemPosition(index)
+      item.style.transform = `translateX(${offset}px)`
+      item.style.marginRight = '0px'
+
+      return
+    }
+
+    if (activeQuicksIndex === 0) {
+      item.style.transform = `translateX(53px)`
+
+      return
+    }
+
+    if (activeQuicksIndex > 0) {
+      item.style.transform = `translateX(-15px)`
+    }
+
+    if (activeQuicksIndex < index) {
+      item.style.transform = `translateX(53px)`
+    }
+  })
+}
+
+function resolveActiveQuicksIndex(nodeList) {
+  return new Array(...nodeList).findIndex(
+    (item) => item.dataset.quicksLabel.toLowerCase() === activeQuicks.value
+  )
+}
+
+function handleCloseQuicks() {
+  activeQuicks.value = null
+
+  const quicks = document.querySelectorAll('.fab__wrap:not(.main__fab)')
+
+  quicks.forEach((item) => {
+    item.style.transform = 'translateX(0px)'
+    item.style.marginRight = '15px'
   })
 }
 

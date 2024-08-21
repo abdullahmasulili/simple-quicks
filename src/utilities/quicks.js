@@ -1,19 +1,26 @@
-export const calculateQuicksItemPosition = (index) => {
-  const multiplier = index + 1
+export const calculateQuicksItemPosition = (index, isActive = true) => {
   const buttonSize = 68
-  const spacing = 15
-  const position = buttonSize + spacing
-  const result = position * multiplier
+  const multiplier = index + 1
+  const offset = 7 * index
 
-  return `translateX(${result}px)`
+  if (index > 0) {
+    return buttonSize * multiplier + offset
+  }
+
+  return buttonSize * multiplier
 }
 
 export const resolveHideQuicks = (elements) => {
   elements.forEach((element, index) => {
-    element.style.marginRight = '0px'
-    element.style.pointerEvents = 'none'
-    element.style.visibility = 'hidden'
-    element.style.opacity = 0
+    setTimeout(
+      () => {
+        element.style.marginRight = '0px'
+        element.style.pointerEvents = 'none'
+        element.style.visibility = 'hidden'
+        element.style.opacity = 0
+      },
+      50 * (index + 1)
+    )
   })
 }
 

@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from 'vue'
 import { Icon } from '@iconify/vue'
 
 import './styles.scss'
@@ -16,10 +15,6 @@ const props = defineProps({
   label: {
     type: String
   },
-  // hideLabel: {
-  //   type: Boolean || String,
-  //   default: true
-  // },
   fabType: {
     type: String,
     default: 'toggler'
@@ -33,7 +28,7 @@ const emits = defineEmits(['click', 'close'])
 </script>
 
 <template>
-  <div class="fab__wrap">
+  <div class="fab__wrap" :data-quicks-label="label">
     <Transition name="fade">
       <div class="fab__label" v-if="label">
         <span>{{ label }}</span>
