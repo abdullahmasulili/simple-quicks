@@ -29,28 +29,6 @@
         @click="handleActiveQuicks('task')"
         @close="handleCloseQuicks()"
       />
-      <VFab
-        icon="material-symbols:person-outline"
-        color="indicator-3"
-        label="Contact"
-        fab-type="item"
-        :hide-label="activeQuicks"
-        :class="activeQuicks === 'contact' ? 'is-active' : ''"
-        :is-active="activeQuicks === 'contact'"
-        @click="handleActiveQuicks('contact')"
-        @close="handleCloseQuicks()"
-      />
-      <VFab
-        icon="material-symbols:group"
-        color="indicator-4"
-        label="Group"
-        fab-type="item"
-        :hide-label="activeQuicks"
-        :class="activeQuicks === 'group' ? 'is-active' : ''"
-        :is-active="activeQuicks === 'group'"
-        @click="handleActiveQuicks('group')"
-        @close="handleCloseQuicks()"
-      />
     </div>
   </main>
 </template>
