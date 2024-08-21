@@ -30,6 +30,18 @@
   align-items: center;
   padding: 20px;
   flex-direction: row-reverse;
+
+  &:has(.is-active) {
+    .fab__wrap:is(.main__fab) {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .fab__wrap .fab__label {
+      opacity: 0;
+    }
+  }
 }
 
 .soft-hide {

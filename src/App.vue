@@ -40,7 +40,11 @@ import VFab from '@/components/Buttons/VFab.vue'
 
 import './assets/styles.scss'
 
-import { resolveHideQuicks, resolveRevealQuicks } from '@/utilities/quicks'
+import {
+  resolveHideQuicks,
+  resolveRevealQuicks,
+  calculateQuicksItemPosition
+} from '@/utilities/quicks'
 
 const activeQuicks = ref(null)
 const showQuicks = ref(false)
@@ -48,8 +52,11 @@ const showQuicks = ref(false)
 function handleActiveQuicks(quicksName) {
   activeQuicks.value = quicksName
 
-  const quicksToggler = document.querySelector('.fab__wrap:is(.main__fab)')
-  quicksToggler.classList.toggle('soft-hide')
+  const quicks = document.querySelectorAll('.fab__wrap:not(.main__fab)')
+
+  quicks.forEach((item, index) => {
+    console.log(item.classList.contains('.is-active'))
+  })
 }
 
 function handleRevealQuicks() {

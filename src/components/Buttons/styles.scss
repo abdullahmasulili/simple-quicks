@@ -25,6 +25,7 @@
     display: flex;
     justify-content: center;
     pointer-events: none;
+    transition: opacity 200ms ease-in-out;
   }
 
   &:not(.main__fab) {

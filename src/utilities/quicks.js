@@ -1,9 +1,10 @@
-function calculateQuicksItemPosition(index) {
+export const calculateQuicksItemPosition = (index) => {
   const multiplier = index + 1
-  const buttonSize = 60
-  const spacing = 20
-  const position = (buttonSize + spacing) * -1
+  const buttonSize = 68
+  const spacing = 15
+  const position = buttonSize + spacing
   const result = position * multiplier
+
   return `translateX(${result}px)`
 }
 
