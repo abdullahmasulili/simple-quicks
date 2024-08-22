@@ -9,10 +9,12 @@ const props = defineProps({
     default: true
   }
 })
+
+const emits = defineEmits(['click'])
 </script>
 
 <template>
-  <li class="chat-room__item chat-room__card">
+  <li class="chat-room__item chat-room__card" @click="$emit('click')">
     <div class="chat-room__participant-avatar">
       <span class="main__avatar">
         <Icon icon="mdi:person-outline" width="22px" />

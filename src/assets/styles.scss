@@ -57,16 +57,59 @@
   padding: unset;
   border: unset;
 
-  .dialog__header,
+  .dialog__header {
+    padding-block: 15px;
+    padding-inline: 25px;
+  }
+
   .dialog__body {
+    padding-inline: $dialog-inline-padding;
+    padding-block: $dialog-block-padding;
+
+    &:is(.dialog--chat-room) {
+      padding-inline: 19px;
+      padding-top: 11px;
+      padding-bottom: 19px;
+    }
+  }
+
+  .dialog__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #bdbdbd;
+
+    .dialog__back-button,
+    .dialog__close-button {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialog__title {
+      flex-grow: 1;
+      .chat-room__name {
+        font-size: 16px;
+        font-weight: bold;
+        color: $primary-color-1;
+      }
+
+      .participant__count {
+        font-size: 14px;
+        color: #333333;
+      }
+    }
+
+    .dialog__close-button {
+      justify-self: end;
+    }
   }
 
   .dialog__body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    padding-inline: $dialog-inline-padding;
-    padding-block: $dialog-block-padding;
 
     .content__wrap {
       height: 100%;

@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
 
 import VFab from '@/components/Buttons/VFab.vue'
 import SearchBar from '@/components/SearchBar/SearchBar.vue'
@@ -16,6 +17,7 @@ import {
 
 const activeQuicks = ref(null)
 const showQuicks = ref(false)
+const isChatRoomOpen = ref(true)
 
 function handleActiveQuicks(quicksName) {
   activeQuicks.value = quicksName
@@ -83,17 +85,34 @@ function handleRevealQuicks() {
 
   resolveRevealQuicks(quicks)
 }
+
+function handleOpenChatRoom() {
+  isChatRoomOpen.value = true
+}
 </script>
 
 <template>
   <main>
     <dialog open class="quicks__dialog">
-      <div class="dialog__header"></div>
-      <div class="dialog__body">
-        <div class="content__wrap">
+      <div class="dialog__header" v-if="isChatRoomOpen">
+        <span class="dialog__back-button">
+          <Icon icon="material-symbols:arrow-back" width="24px" />
+        </span>
+        <div class="dialog__title">
+          <h2 class="chat-room__name">
+            I-589 - AMARKHIL, Obaidullah [Affirmative Filing with ZHN]
+          </h2>
+          <span class="participant__count">3 Participant</span>
+        </div>
+        <span class="dialog__close-button">
+          <Icon icon="material-symbols:close" width="24px" />
+        </span>
+      </div>
+      <div class="dialog__body" :class="isChatRoomOpen ? 'dialog--chat-room' : ''">
+        <div class="content__wrap" v-if="!isChatRoomOpen">
           <SearchBar placeholder="Search" />
           <ChatRoomList>
-            <ChatRoomItem v-for="i in 10" :key="i" />
+            <ChatRoomItem v-for="i in 10" :key="i" @click="handleOpenChatRoom" />
           </ChatRoomList>
         </div>
       </div>
