@@ -1,8 +1,6 @@
 <script setup>
 import { Icon } from '@iconify/vue'
 
-import '@/components/SearchBar/styles.scss'
-
 const props = defineProps({
   placeholder: {
     type: String,
@@ -19,3 +17,7 @@ const props = defineProps({
     </span>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import './styles.scss';
+</style>
