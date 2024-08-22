@@ -89,3 +89,16 @@
     }
   }
 }
+
+.chat__window {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #bdbdbd;
+    border-radius: 15px;
+  }
+}
