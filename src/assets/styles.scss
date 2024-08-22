@@ -1,3 +1,5 @@
+@import '@/assets/variables.scss';
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 200ms ease-in-out;
@@ -41,6 +43,25 @@
     .fab__wrap .fab__label {
       opacity: 0;
     }
+  }
+}
+
+.quicks__dialog {
+  position: absolute;
+  right: 20px;
+  bottom: 108px;
+  background-color: #ffffff;
+  color: $primary-color-2;
+  width: 734px;
+  height: 737px;
+  padding-inline: $dialog-inline-padding;
+  padding-block: $dialog-block-padding;
+  border-radius: 5px;
+
+  .dialog__body {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
   }
 }
 
