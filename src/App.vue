@@ -95,7 +95,7 @@ function handleOpenChatRoom() {
   <main>
     <dialog open class="quicks__dialog">
       <div class="dialog__header" v-if="isChatRoomOpen">
-        <span class="dialog__back-button">
+        <span class="dialog__back-button" @click="isChatRoomOpen = false">
           <Icon icon="material-symbols:arrow-back" width="24px" />
         </span>
         <div class="dialog__title">
