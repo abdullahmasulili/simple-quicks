@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@storinka/dropdown':
+        specifier: ^2.0.2
+        version: 2.0.2(vue@3.4.38)
       lato-font:
         specifier: ^3.0.0
         version: 3.0.0
@@ -544,6 +547,12 @@ packages:
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
+
+  '@storinka/dropdown@2.0.2':
+    resolution: {integrity: sha512-TgExA48Qkf1k6WHr3WVNCMH7CTSQzRCt8tFPA83E4GoqjMmMa0S9IqJseIDj4Ypc98E3mKLP6nwBT6szdbD5nw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: ^3.0.5
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
@@ -2919,6 +2928,10 @@ snapshots:
   '@sideway/pinpoint@2.0.0': {}
 
   '@sinclair/typebox@0.27.8': {}
+
+  '@storinka/dropdown@2.0.2(vue@3.4.38)':
+    dependencies:
+      vue: 3.4.38
 
   '@types/estree@1.0.5': {}
 
