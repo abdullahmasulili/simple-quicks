@@ -67,8 +67,8 @@
 
 .btn {
   color: $secondary-color;
-  padding-inline: 8px;
-  padding-block: 16px;
+  padding-inline: 16px;
+  padding-block: 14px;
   height: 40px;
   border-radius: 5px;
   font-size: 12px;
@@ -81,6 +81,10 @@
   background-color: $primary-color-1;
   cursor: pointer;
   transition: all 200ms ease-in-out;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
 
   &::before {
     content: '';
@@ -91,7 +95,6 @@
     right: 0;
     background-color: #fff;
     opacity: 0;
-    border-radius: 50%;
     transition: opacity 200ms ease-in-out;
   }
 
