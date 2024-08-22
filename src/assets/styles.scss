@@ -23,6 +23,10 @@
   transform: translateX(15px);
 }
 
+ul {
+  padding: unset;
+}
+
 .quicks {
   position: absolute;
   bottom: 0;
@@ -56,24 +60,12 @@
   border-radius: 5px;
   padding: unset;
   border: unset;
+  display: grid;
 
   .dialog__header {
     padding-block: 15px;
-    padding-inline: 25px;
-  }
+    padding-inline: 19px;
 
-  .dialog__body {
-    padding-inline: $dialog-inline-padding;
-    padding-block: $dialog-block-padding;
-
-    &:is(.dialog--chat-room) {
-      padding-inline: 19px;
-      padding-top: 11px;
-      padding-bottom: 19px;
-    }
-  }
-
-  .dialog__header {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -107,6 +99,8 @@
   }
 
   .dialog__body {
+    padding-inline: $dialog-inline-padding;
+    padding-block: $dialog-block-padding;
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -123,6 +117,18 @@
       &::-webkit-scrollbar-thumb {
         background-color: #bdbdbd;
         border-radius: 15px;
+      }
+    }
+
+    &:is(.dialog--chat-room) {
+      padding-inline: 19px;
+      padding-top: 11px;
+      padding-bottom: 19px;
+
+      .content__wrap {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
       }
     }
   }
