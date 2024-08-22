@@ -3,6 +3,8 @@ import { ref } from 'vue'
 
 import VFab from '@/components/Buttons/VFab.vue'
 import SearchBar from '@/components/SearchBar/SearchBar.vue'
+import ChatRoomList from '@/components/Chat/ChatRoomList.vue'
+import ChatRoomItem from '@/components/Chat/ChatRoomItem.vue'
 
 import './assets/styles.scss'
 
@@ -88,6 +90,9 @@ function handleRevealQuicks() {
     <div class="quicks__dialog">
       <div class="dialog__body">
         <SearchBar placeholder="Search" />
+        <ChatRoomList>
+          <ChatRoomItem v-for="i in 10" :key="i" />
+        </ChatRoomList>
       </div>
     </div>
     <div class="quicks">
