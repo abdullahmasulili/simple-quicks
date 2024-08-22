@@ -5,3 +5,7 @@
     </ul>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import '@/components/Chat/styles.scss';
+</style>

@@ -60,7 +60,8 @@ ul {
   border-radius: 5px;
   padding: unset;
   border: unset;
-  display: grid;
+  display: flex;
+  flex-direction: column;
 
   .dialog__header {
     padding-block: 15px;
@@ -124,6 +125,7 @@ ul {
       padding-inline: 19px;
       padding-top: 11px;
       padding-bottom: 19px;
+      flex-grow: 1;
 
       .content__wrap {
         display: flex;

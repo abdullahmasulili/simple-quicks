@@ -92,6 +92,7 @@
 
 .chat__window {
   overflow-y: auto;
+  flex-grow: 1;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -100,5 +101,98 @@
   &::-webkit-scrollbar-thumb {
     background-color: #bdbdbd;
     border-radius: 15px;
+  }
+
+  .chat__messages {
+    display: grid;
+    gap: 10px;
+  }
+}
+
+.chat-bubble__wrap {
+  width: 100%;
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+
+  .chat__bubble {
+    max-width: 541px;
+    width: fit-content;
+    display: flex;
+    align-items: start;
+    gap: 7px;
+
+    .bubble__body {
+      padding: 10px;
+      max-width: 518px;
+      width: fit-content;
+      border-radius: 5px;
+
+      .message {
+        font-size: 14px;
+        margin-bottom: 12px;
+        line-height: normal;
+      }
+    }
+
+    .bubble__action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  .chat-bubble__name {
+    font-weight: 600;
+  }
+
+  &:is(.chat--color-1) {
+    color: $primary-color-2;
+
+    .chat-bubble__name {
+      color: $chat-accent-color-1;
+    }
+
+    .bubble__body {
+      background-color: $chat-primary-color-1;
+    }
+  }
+
+  &:is(.chat--color-2) {
+    color: $primary-color-2;
+
+    .chat-bubble__name {
+      color: $chat-accent-color-2;
+    }
+
+    .bubble__body {
+      background-color: $chat-primary-color-2;
+    }
+  }
+
+  &:is(.chat--color-3) {
+    color: $primary-color-2;
+
+    .chat-bubble__name {
+      color: $chat-accent-color-3;
+    }
+
+    .bubble__body {
+      background-color: $chat-primary-color-3;
+    }
+  }
+
+  &:is(.chat-bubble--primary) {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    .chat-bubble__name {
+      text-align: right;
+    }
+
+    .chat__bubble {
+      flex-direction: row-reverse;
+    }
   }
 }

@@ -6,6 +6,9 @@ import VFab from '@/components/Buttons/VFab.vue'
 import SearchBar from '@/components/SearchBar/SearchBar.vue'
 import ChatRoomList from '@/components/Chat/ChatRoomList.vue'
 import ChatRoomItem from '@/components/Chat/ChatRoomItem.vue'
+import ChatWindow from '@/components/Chat/ChatWindow.vue'
+import ChatBubble from '@/components/Chat/ChatBubble.vue'
+import ComposeMessage from '@/components/ComposeMessage/ComposeMessage.vue'
 
 import './assets/styles.scss'
 
@@ -93,30 +96,39 @@ function handleOpenChatRoom() {
 
 <template>
   <main>
-    <dialog open class="quicks__dialog">
-      <div class="dialog__header" v-if="isChatRoomOpen">
-        <span class="dialog__back-button" @click="isChatRoomOpen = false">
-          <Icon icon="material-symbols:arrow-back" width="24px" />
-        </span>
-        <div class="dialog__title">
-          <h2 class="chat-room__name">
-            I-589 - AMARKHIL, Obaidullah [Affirmative Filing with ZHN]
-          </h2>
-          <span class="participant__count">3 Participant</span>
+    <Transition name="fade">
+      <dialog open v-if="activeQuicks" class="quicks__dialog">
+        <div class="dialog__header" v-if="isChatRoomOpen">
+          <span class="dialog__back-button" @click="isChatRoomOpen = false">
+            <Icon icon="material-symbols:arrow-back" width="24px" />
+          </span>
+          <div class="dialog__title">
+            <h2 class="chat-room__name">
+              I-589 - AMARKHIL, Obaidullah [Affirmative Filing with ZHN]
+            </h2>
+            <span class="participant__count">3 Participant</span>
+          </div>
+          <span class="dialog__close-button" @click="handleCloseQuicks">
+            <Icon icon="material-symbols:close" width="24px" />
+          </span>
         </div>
-        <span class="dialog__close-button">
-          <Icon icon="material-symbols:close" width="24px" />
-        </span>
-      </div>
-      <div class="dialog__body" :class="isChatRoomOpen ? 'dialog--chat-room' : ''">
-        <div class="content__wrap" v-if="!isChatRoomOpen">
-          <SearchBar placeholder="Search" />
-          <ChatRoomList>
-            <ChatRoomItem v-for="i in 10" :key="i" @click="handleOpenChatRoom" />
-          </ChatRoomList>
+        <div class="dialog__body" :class="isChatRoomOpen ? 'dialog--chat-room' : ''">
+          <div class="content__wrap" v-if="isChatRoomOpen">
+            <chat-window>
+              <chat-bubble color="color-1" username="Mary Hilda" />
+              <chat-bubble is-primary />
+            </chat-window>
+            <compose-message />
+          </div>
+          <div class="content__wrap" v-if="!isChatRoomOpen">
+            <search-bar placeholder="Search" />
+            <chat-room-list>
+              <chat-room-item v-for="i in 10" :key="i" @click="handleOpenChatRoom" />
+            </chat-room-list>
+          </div>
         </div>
-      </div>
-    </dialog>
+      </dialog>
+    </Transition>
     <div class="quicks">
       <VFab
         icon="oui:bolt"
