@@ -87,14 +87,17 @@ function handleRevealQuicks() {
 
 <template>
   <main>
-    <div class="quicks__dialog">
+    <dialog open class="quicks__dialog">
+      <div class="dialog__header"></div>
       <div class="dialog__body">
-        <SearchBar placeholder="Search" />
-        <ChatRoomList>
-          <ChatRoomItem v-for="i in 10" :key="i" />
-        </ChatRoomList>
+        <div class="content__wrap">
+          <SearchBar placeholder="Search" />
+          <ChatRoomList>
+            <ChatRoomItem v-for="i in 10" :key="i" />
+          </ChatRoomList>
+        </div>
       </div>
-    </div>
+    </dialog>
     <div class="quicks">
       <VFab
         icon="oui:bolt"

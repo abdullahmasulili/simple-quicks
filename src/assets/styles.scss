@@ -47,29 +47,40 @@
 }
 
 .quicks__dialog {
-  position: absolute;
-  right: 20px;
+  left: calc(100% - 754px);
   bottom: 108px;
   background-color: #ffffff;
   color: $primary-color-2;
   width: 734px;
   height: 737px;
-  padding-inline: $dialog-inline-padding;
-  padding-block: $dialog-block-padding;
   border-radius: 5px;
+  padding: unset;
+  border: unset;
+
+  .dialog__header,
+  .dialog__body {
+  }
 
   .dialog__body {
     height: 100%;
     width: 100%;
-    overflow-y: auto;
+    overflow: hidden;
+    padding-inline: $dialog-inline-padding;
+    padding-block: $dialog-block-padding;
 
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
+    .content__wrap {
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
 
-    &::-webkit-scrollbar-thumb {
-      background-color: #bdbdbd;
-      border-radius: 15px;
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #bdbdbd;
+        border-radius: 15px;
+      }
     }
   }
 }
