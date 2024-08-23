@@ -10,6 +10,7 @@ import ChatBubble from '@/components/Chat/ChatBubble.vue'
 import ComposeMessage from '@/components/ComposeMessage/ComposeMessage.vue'
 import QuicksDialog from '@/components/Dialog/QuicksDialog.vue'
 import DialogHeader from '@/components/Dialog/DialogHeader.vue'
+import DialogBody from '@/components/Dialog/DialogBody.vue'
 
 const props = defineProps({
   activeQuicks: {
@@ -45,7 +46,7 @@ function handleOpenChatRoom() {
         @on-close="$emit('onClose')"
       />
     </template>
-    <div class="dialog__body" :class="isChatRoomOpen ? 'dialog--chat-room' : ''">
+    <dialog-body :class="isChatRoomOpen ? 'dialog--chat-room' : ''">
       <div class="content__wrap" v-if="isChatRoomOpen">
         <chat-window>
           <chat-bubble color="color-1" username="Mary Hilda" :bubble-id="uuidv4()" />
@@ -64,6 +65,6 @@ function handleOpenChatRoom() {
           />
         </chat-room-list>
       </div>
-    </div>
+    </dialog-body>
   </quicks-dialog>
 </template>
