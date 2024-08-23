@@ -8,6 +8,7 @@ import ChatRoomItem from '@/components/Chat/ChatRoomItem.vue'
 import ChatWindow from '@/components/Chat/ChatWindow.vue'
 import ChatBubble from '@/components/Chat/ChatBubble.vue'
 import ComposeMessage from '@/components/ComposeMessage/ComposeMessage.vue'
+import VSpinner from '@/components/Spinner/VSpinner.vue'
 
 const props = defineProps({
   isRoomOpen: {
@@ -26,6 +27,11 @@ const openRoom = computed({
     return props.isRoomOpen
   }
 })
+const isLoading = ref(true)
+
+setTimeout(() => {
+  isLoading.value = false
+}, 2000)
 </script>
 
 <template>
@@ -42,7 +48,7 @@ const openRoom = computed({
   </div>
   <div class="content__wrap" v-if="!openRoom">
     <search-bar placeholder="Search" />
-    <chat-room-list>
+    <chat-room-list v-if="!isLoading">
       <chat-room-item @click="$emit('onRoomClick')" :is-agent="isAgent" />
       <chat-room-item
         @click="$emit('onRoomClick', true, 'FastVisa Support')"
@@ -50,5 +56,8 @@ const openRoom = computed({
         participant-name="FastVisa Support"
       />
     </chat-room-list>
+    <div class="loading__overlay" v-if="isLoading">
+      <v-spinner caption="Loading Chats ..." />
+    </div>
   </div>
 </template>

@@ -23,6 +23,9 @@ importers:
       vue:
         specifier: ^3.4.29
         version: 3.4.38
+      vue-ellipse-progress:
+        specifier: ^2.1.2
+        version: 2.1.2(vue@3.4.38)
       vue-router:
         specifier: ^4.3.3
         version: 4.4.3(vue@3.4.38)
@@ -2369,6 +2372,11 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+
+  vue-ellipse-progress@2.1.2:
+    resolution: {integrity: sha512-CQl2DMx7uvWyD+1vFd8cNjLQ0l1d6ZD3pTVZaUgsPev1S/9Jo8LGKX7TXxeTyf18y7ckMmeFt/cQY4Rt4CoEsg==}
+    peerDependencies:
+      vue: ^3
 
   vue-eslint-parser@9.4.3:
     resolution: {integrity: sha512-2rYRLWlIpaiN8xbPiDyXZXRgLGOtWxERV7ND5fFAv5qo1D2N9Fu9MNajBNc6o13lZ+24DAWCkQCvj4klgmcITg==}
@@ -4805,6 +4813,10 @@ snapshots:
   vue-component-type-helpers@2.0.29: {}
 
   vue-demi@0.14.10(vue@3.4.38):
+    dependencies:
+      vue: 3.4.38
+
+  vue-ellipse-progress@2.1.2(vue@3.4.38):
     dependencies:
       vue: 3.4.38
 

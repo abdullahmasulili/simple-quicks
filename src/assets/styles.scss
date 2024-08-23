@@ -123,6 +123,7 @@ li {
       height: 100%;
       width: 100%;
       overflow-y: auto;
+      position: relative;
 
       &::-webkit-scrollbar {
         width: 8px;
@@ -153,4 +154,14 @@ li {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+}
+
+.loading__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
 }
