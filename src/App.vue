@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 import VFab from '@/components/Buttons/VFab.vue'
 import Inbox from '@/components/Quicks/Inbox.vue'
+import Task from '@/components/Quicks/Task.vue'
 
 import './assets/styles.scss'
 
@@ -86,6 +87,7 @@ function handleRevealQuicks() {
 <template>
   <main>
     <Inbox :active-quicks="activeQuicks" @on-close="handleCloseQuicks" />
+    <Task :active-quicks="activeQuicks" />
     <div class="quicks">
       <VFab
         icon="oui:bolt"
