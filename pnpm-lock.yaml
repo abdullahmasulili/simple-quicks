@@ -23,6 +23,9 @@ importers:
       vue:
         specifier: ^3.4.29
         version: 3.4.38
+      vue-collapsed:
+        specifier: ^1.3.4
+        version: 1.3.4
       vue-ellipse-progress:
         specifier: ^2.1.2
         version: 2.1.2(vue@3.4.38)
@@ -2356,6 +2359,9 @@ packages:
         optional: true
       jsdom:
         optional: true
+
+  vue-collapsed@1.3.4:
+    resolution: {integrity: sha512-W92b+QT3n5iTrfrH6kyvx3TsriYPfy/Ymsb6DaanjeMkJYMdVl1S4wzKRYVDsxWQPDxiC+5m+UwPwT/8YAYodA==}
 
   vue-component-type-helpers@2.0.29:
     resolution: {integrity: sha512-58i+ZhUAUpwQ+9h5Hck0D+jr1qbYl4voRt5KffBx8qzELViQ4XdT/Tuo+mzq8u63teAG8K0lLaOiL5ofqW38rg==}
@@ -4805,6 +4811,8 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+
+  vue-collapsed@1.3.4: {}
 
   vue-component-type-helpers@2.0.29: {}
 
