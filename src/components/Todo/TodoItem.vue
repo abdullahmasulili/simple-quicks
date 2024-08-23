@@ -9,6 +9,8 @@ const props = defineProps({
       'Set up documentation report for several Cases : Case 145443, Case 192829 and Case 182203'
   }
 })
+
+const emits = defineEmits(['onDelete'])
 </script>
 
 <template>
@@ -34,7 +36,12 @@ const props = defineProps({
               </template>
               <template #body>
                 <menu>
-                  <li class="action__delete-todo text--color-indicator-3">Delete</li>
+                  <li
+                    class="action__delete-todo text--color-indicator-3"
+                    @click="$emit('onDelete')"
+                  >
+                    Delete
+                  </li>
                 </menu>
               </template>
             </dropdown-menu>

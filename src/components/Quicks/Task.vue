@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, ref, watchEffect } from 'vue'
+import { onBeforeMount, ref, watchEffect, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import { storeToRefs } from 'pinia'
 
@@ -10,6 +10,7 @@ import DialogBody from '@/components/Dialog/DialogBody.vue'
 import VBtn from '@/components/Buttons/VBtn.vue'
 import TodoList from '@/components/Todo/TodoList.vue'
 import TodoItem from '@/components/Todo/TodoItem.vue'
+import VSpinner from '@/components/Spinner/VSpinner.vue'
 
 const props = defineProps({
   activeQuicks: {
@@ -19,13 +20,13 @@ const props = defineProps({
 
 const store = useTodosStore()
 
+const { allTodos, loading } = storeToRefs(store)
+const { getAllTodos, addTodo, updateTodo, deleteTodo } = store
+
 const isQuickOpen = ref(false)
-const { allTodos } = storeToRefs(store)
-const { getAllTodos } = store
 
 onBeforeMount(() => {
   getAllTodos()
-  console.log(allTodos)
 })
 
 watchEffect(() => {
@@ -35,6 +36,10 @@ watchEffect(() => {
     isQuickOpen.value = false
   }
 })
+
+function handleDeleteTodo(id) {
+  deleteTodo(id)
+}
 </script>
 
 <template>
@@ -60,9 +65,17 @@ watchEffect(() => {
         <v-btn caption="New Task" />
       </div>
       <div class="content__wrap">
-        <todo-list>
-          <todo-item v-for="todo in allTodos" :key="todo.title" :title="todo.title" />
+        <todo-list v-if="!loading">
+          <todo-item
+            v-for="todo in allTodos"
+            :key="todo.title"
+            :title="todo.title"
+            @on-delete="handleDeleteTodo(todo.id)"
+          />
         </todo-list>
+        <div class="loading__overlay" v-if="loading">
+          <v-spinner caption="Loading Tasks ..." />
+        </div>
       </div>
     </dialog-body>
   </quicks-dialog>
