@@ -2,6 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+
 import SDropdown from '@storinka/dropdown'
 
 import App from './App.vue'
