@@ -118,6 +118,8 @@ li {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
     .content__wrap {
       height: 100%;
