@@ -38,3 +38,7 @@ const props = defineProps({
     </span>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import './styles.scss';
+</style>

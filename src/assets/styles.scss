@@ -165,3 +165,18 @@ li {
   display: grid;
   place-items: center;
 }
+
+.bubble-action__wrap,
+.filter__wrap {
+  .v-dropdown-menu__container {
+    border: 1px solid #bdbdbd;
+    padding: unset;
+    border-radius: 5px;
+  }
+}
+
+.bubble-action__wrap {
+  .v-dropdown-menu__container {
+    min-width: 126px;
+  }
+}
