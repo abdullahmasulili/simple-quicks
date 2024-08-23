@@ -1,5 +1,6 @@
 <script setup>
 import { Icon } from '@iconify/vue'
+import '@storinka/dropdown/dist/styles/light-theme.css'
 
 const props = defineProps({
   username: {
@@ -17,12 +18,16 @@ const props = defineProps({
   isPrimary: {
     type: Boolean,
     default: false
+  },
+  bubbleId: {
+    type: String
   }
 })
 </script>
 
 <template>
   <div
+    :id="bubbleId"
     class="chat-bubble__wrap"
     :class="`chat--${color} ${isPrimary ? 'chat-bubble--primary' : ''}`"
   >
@@ -36,9 +41,15 @@ const props = defineProps({
         </p>
         <span class="time">{{ time }}</span>
       </div>
-      <span class="bubble__action">
+      <span class="bubble__action" v-s-dropdown-toggle:[bubbleId]>
         <Icon icon="material-symbols:more-horiz" />
       </span>
+      <SDropdown :name="bubbleId" theme="light" :align="isPrimary ? 'left' : 'right'">
+        <menu>
+          <li class="bubble-action__item text--color-primary-1">Edit</li>
+          <li class="bubble-action__item text--color-indicator-3">Delete</li>
+        </menu>
+      </SDropdown>
     </div>
   </div>
 </template>

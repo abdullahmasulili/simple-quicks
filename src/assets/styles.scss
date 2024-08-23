@@ -23,8 +23,21 @@
   transform: translateX(15px);
 }
 
-ul {
+ul,
+menu {
   padding: unset;
+}
+
+li {
+  list-style: none;
+}
+
+.text--color-primary-1 {
+  color: $primary-color-1;
+}
+
+.text--color-indicator-3 {
+  color: $indicator-color-3;
 }
 
 .quicks {
@@ -66,7 +79,7 @@ ul {
   .dialog__header {
     padding-block: 15px;
     padding-inline: 19px;
-
+    height: 73.5px;
     display: flex;
     align-items: center;
     gap: 10px;

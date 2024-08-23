@@ -53,7 +53,7 @@
         line-height: normal;
         flex-wrap: nowrap;
 
-        .chat-room__participant {
+        .chat-room__title {
           font-size: 16px;
           font-weight: bold;
           color: $primary-color-1;
@@ -93,6 +93,7 @@
 .chat__window {
   overflow-y: auto;
   flex-grow: 1;
+  position: relative;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -106,6 +107,14 @@
   .chat__messages {
     display: grid;
     gap: 10px;
+  }
+
+  .btn:is(.btn--new-message) {
+    color: $primary-color-1;
+    background-color: $sticker-color-1;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - calc(118.64px / 2));
   }
 }
 
@@ -146,9 +155,11 @@
     font-weight: 600;
   }
 
-  &:is(.chat--color-1) {
+  &:is(.chat--color-1, .chat--color-2, .chat--color-3, .chat--color-4) {
     color: $primary-color-2;
+  }
 
+  &:is(.chat--color-1) {
     .chat-bubble__name {
       color: $chat-accent-color-1;
     }
@@ -159,8 +170,6 @@
   }
 
   &:is(.chat--color-2) {
-    color: $primary-color-2;
-
     .chat-bubble__name {
       color: $chat-accent-color-2;
     }
@@ -171,14 +180,22 @@
   }
 
   &:is(.chat--color-3) {
-    color: $primary-color-2;
-
     .chat-bubble__name {
       color: $chat-accent-color-3;
     }
 
     .bubble__body {
       background-color: $chat-primary-color-3;
+    }
+  }
+
+  &:is(.chat--color-4) {
+    .chat-bubble__name {
+      color: $primary-color-1;
+    }
+
+    .bubble__body {
+      background-color: #f8f8f8;
     }
   }
 
@@ -193,6 +210,31 @@
 
     .chat__bubble {
       flex-direction: row-reverse;
+    }
+  }
+}
+
+.s-dropdown:is(.s-dropdown.s-dropdown-light-theme) {
+  width: 126px;
+  border: 1px solid #bdbdbd;
+  padding: unset;
+  border-radius: 5px;
+
+  .bubble-action__item {
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    padding-block: 6px;
+    padding-inline: 15px;
+    border-bottom: 1px solid #bdbdbd;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+    &:last-child {
+      border-bottom: unset;
+    }
+
+    &:hover {
+      background-color: $secondary-color;
     }
   }
 }

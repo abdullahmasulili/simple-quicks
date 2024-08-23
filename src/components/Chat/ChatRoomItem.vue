@@ -7,17 +7,38 @@ const props = defineProps({
   isMultiple: {
     type: Boolean,
     default: true
+  },
+  participantName: {
+    type: String,
+    default: ''
+  },
+  roomTitle: {
+    type: String,
+    default: 'Jeannette Moraima Guaman Chamba (Hutto I-589) [ Hutto Follow Up - Brief Service ]'
+  },
+  isAgent: {
+    type: Boolean,
+    default: true
   }
 })
 
 const emits = defineEmits(['click'])
+
+function resolveParticipantInitial() {
+  if (!props.participantName) {
+    return
+  }
+
+  return props.participantName.charAt(0)
+}
 </script>
 
 <template>
   <li class="chat-room__item chat-room__card" @click="$emit('click')">
     <div class="chat-room__participant-avatar">
       <span class="main__avatar">
-        <Icon icon="mdi:person-outline" width="22px" />
+        <Icon v-if="!participantName && roomTitle" icon="mdi:person-outline" width="22px" />
+        <span v-if="participantName && isAgent">{{ resolveParticipantInitial() }}</span>
       </span>
       <span v-if="isMultiple" class="secondary__avatar">
         <Icon icon="mdi:person-outline" width="22px" />
@@ -25,13 +46,13 @@ const emits = defineEmits(['click'])
     </div>
     <div class="chat-room__summary">
       <div class="chat-room__header">
-        <h3 class="chat-room__participant">
-          Jeannette Moraima Guaman Chamba (Hutto I-589) [ Hutto Follow Up - Brief Service ]
+        <h3 class="chat-room__title">
+          {{ participantName || roomTitle }}
         </h3>
         <span class="chat-room__date">January 1, 2021 19:29</span>
       </div>
       <div class="chat-room__body">
-        <h4 class="user__name">Cameron Phillips :</h4>
+        <h4 v-if="!isAgent" class="user__name">Cameron Phillips :</h4>
         <p class="user__message">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure exercitationem voluptatum
           id officiis qui, sapiente expedita voluptates aliquam doloribus fugit nam sint mollitia
