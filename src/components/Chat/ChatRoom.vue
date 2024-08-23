@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch, watchEffect } from 'vue'
+import { computed, ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 
 import SearchBar from '@/components/SearchBar/SearchBar.vue'
@@ -9,7 +9,6 @@ import ChatWindow from '@/components/Chat/ChatWindow.vue'
 import ChatBubble from '@/components/Chat/ChatBubble.vue'
 import ComposeMessage from '@/components/ComposeMessage/ComposeMessage.vue'
 import VSpinner from '@/components/Spinner/VSpinner.vue'
-import ChatSeparator from '@/components/Chat/ChatSeparator.vue'
 
 const props = defineProps({
   isRoomOpen: {

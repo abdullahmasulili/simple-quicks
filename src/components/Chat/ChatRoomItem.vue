@@ -1,8 +1,6 @@
 <script setup>
 import { Icon } from '@iconify/vue'
 
-import '@/components/Chat/styles.scss'
-
 const props = defineProps({
   isMultiple: {
     type: Boolean,
@@ -58,3 +56,7 @@ function resolveParticipantInitial() {
     </div>
   </li>
 </template>
+
+<style lang="scss" scoped>
+@import '@/components/Chat/styles.scss';
+</style>
