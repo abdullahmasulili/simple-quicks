@@ -9,6 +9,7 @@ import ChatWindow from '@/components/Chat/ChatWindow.vue'
 import ChatBubble from '@/components/Chat/ChatBubble.vue'
 import ComposeMessage from '@/components/ComposeMessage/ComposeMessage.vue'
 import VSpinner from '@/components/Spinner/VSpinner.vue'
+import ChatSeparator from '@/components/Chat/ChatSeparator.vue'
 
 const props = defineProps({
   isRoomOpen: {
@@ -38,23 +39,15 @@ setTimeout(() => {
   <div class="content__wrap" v-if="openRoom">
     <chat-window :is-agent="isAgent">
       <chat-bubble
+        v-for="i in 10"
+        :key="i"
+        :is-primary="i % 2 !== 0"
         :color="isAgent ? 'color-4' : 'color-1'"
         :username="isAgent ? 'FastVisa Support' : 'Mary Hilda'"
         :bubble-id="uuidv4()"
+        :show-separator="i % 3 === 0"
       />
-      <chat-bubble is-primary :bubble-id="uuidv4()" />
-      <chat-bubble is-primary :bubble-id="uuidv4()" />
-      <chat-bubble is-primary :bubble-id="uuidv4()" />
-      <chat-bubble
-        :color="isAgent ? 'color-4' : 'color-3'"
-        :username="isAgent ? 'FastVisa Support' : 'Mary Hilda'"
-        :bubble-id="uuidv4()"
-      />
-      <chat-bubble
-        :color="isAgent ? 'color-4' : 'color-3'"
-        :username="isAgent ? 'FastVisa Support' : 'Mary Hilda'"
-        :bubble-id="uuidv4()"
-      />
+      <chat-bubble is-primary :bubble-id="uuidv4()" :show-separator="true" :is-new-message="true" />
     </chat-window>
     <compose-message />
   </div>

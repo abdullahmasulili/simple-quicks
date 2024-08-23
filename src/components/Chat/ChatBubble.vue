@@ -1,6 +1,7 @@
 <script setup>
 import { Icon } from '@iconify/vue'
-import '@storinka/dropdown/dist/styles/light-theme.css'
+
+import ChatSeparator from '@/components/Chat/ChatSeparator.vue'
 
 const props = defineProps({
   username: {
@@ -21,17 +22,26 @@ const props = defineProps({
   },
   bubbleId: {
     type: String
+  },
+  isNewMessage: {
+    type: Boolean,
+    default: false
+  },
+  showSeparator: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
 
 <template>
+  <chat-separator v-if="showSeparator" :is-new-message-separator="isNewMessage && showSeparator" />
   <div
     :id="bubbleId"
     class="chat-bubble__wrap"
-    :class="`chat--${color} ${isPrimary ? 'chat-bubble--primary' : ''}`"
+    :class="`chat--${isPrimary ? 'color-2' : color} ${isPrimary ? 'chat-bubble--primary' : ''}`"
   >
-    <h3 class="chat-bubble__name">{{ username }}</h3>
+    <h3 class="chat-bubble__name">{{ isPrimary ? 'You' : username }}</h3>
     <div class="chat__bubble">
       <div class="bubble__body">
         <p class="message">
