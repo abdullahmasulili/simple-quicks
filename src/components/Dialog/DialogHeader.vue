@@ -26,7 +26,9 @@ const emits = defineEmits(['onBack', 'onClose'])
     </span>
     <div class="dialog__title">
       <h2 class="chat-room__name">{{ title }}</h2>
-      <span class="participant__count">{{ participantCount }} Participant</span>
+      <span v-if="participantCount > 2" class="participant__count"
+        >{{ participantCount }} Participant</span
+      >
     </div>
     <span class="dialog__close-button" @click="$emit('onClose')">
       <Icon icon="material-symbols:close" width="24px" />

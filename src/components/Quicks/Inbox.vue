@@ -1,16 +1,10 @@
 <script setup>
 import { ref, watchEffect } from 'vue'
-import { v4 as uuidv4 } from 'uuid'
 
-import SearchBar from '@/components/SearchBar/SearchBar.vue'
-import ChatRoomList from '@/components/Chat/ChatRoomList.vue'
-import ChatRoomItem from '@/components/Chat/ChatRoomItem.vue'
-import ChatWindow from '@/components/Chat/ChatWindow.vue'
-import ChatBubble from '@/components/Chat/ChatBubble.vue'
-import ComposeMessage from '@/components/ComposeMessage/ComposeMessage.vue'
 import QuicksDialog from '@/components/Dialog/QuicksDialog.vue'
 import DialogHeader from '@/components/Dialog/DialogHeader.vue'
 import DialogBody from '@/components/Dialog/DialogBody.vue'
+import ChatRoom from '@/components/Chat/ChatRoom.vue'
 
 const props = defineProps({
   activeQuicks: {
@@ -22,6 +16,8 @@ const emits = defineEmits(['onClose'])
 
 const isChatRoomOpen = ref(false)
 const isQuickOpen = ref(false)
+const isAgentRoom = ref(false)
+const dialogTitle = ref('I-589 - AMARKHIL, Obaidullah [Affirmative Filing with ZHN]')
 
 watchEffect(() => {
   if (props.activeQuicks === 'inbox') {
@@ -32,8 +28,10 @@ watchEffect(() => {
   }
 })
 
-function handleOpenChatRoom() {
+function handleOpenChatRoom(isAgent, roomTitle) {
   isChatRoomOpen.value = true
+  isAgentRoom.value = isAgent
+  dialogTitle.value = roomTitle
 }
 </script>
 
@@ -44,27 +42,16 @@ function handleOpenChatRoom() {
         :is-show="isChatRoomOpen"
         @on-back="isChatRoomOpen = false"
         @on-close="$emit('onClose')"
+        :title="dialogTitle"
+        :participant-count="isAgentRoom ? 2 : 3"
       />
     </template>
     <dialog-body :class="isChatRoomOpen ? 'dialog--chat-room' : ''">
-      <div class="content__wrap" v-if="isChatRoomOpen">
-        <chat-window>
-          <chat-bubble color="color-1" username="Mary Hilda" :bubble-id="uuidv4()" />
-          <chat-bubble is-primary :bubble-id="uuidv4()" />
-        </chat-window>
-        <compose-message />
-      </div>
-      <div class="content__wrap" v-if="!isChatRoomOpen">
-        <search-bar placeholder="Search" />
-        <chat-room-list>
-          <chat-room-item @click="handleOpenChatRoom" :is-agent="false" />
-          <chat-room-item
-            @click="handleOpenChatRoom"
-            :is-multiple="false"
-            participant-name="FastVisa Support"
-          />
-        </chat-room-list>
-      </div>
+      <chat-room
+        @on-room-click="handleOpenChatRoom"
+        :is-room-open="isChatRoomOpen"
+        :is-agent="isAgentRoom"
+      />
     </dialog-body>
   </quicks-dialog>
 </template>
