@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@storinka/dropdown':
-        specifier: ^2.0.2
-        version: 2.0.2(vue@3.4.38)
       lato-font:
         specifier: ^3.0.0
         version: 3.0.0
@@ -20,6 +17,9 @@ importers:
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
+      v-dropdown-menu:
+        specifier: ^2.0.4
+        version: 2.0.4
       vue:
         specifier: ^3.4.29
         version: 3.4.38
@@ -553,12 +553,6 @@ packages:
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
-
-  '@storinka/dropdown@2.0.2':
-    resolution: {integrity: sha512-TgExA48Qkf1k6WHr3WVNCMH7CTSQzRCt8tFPA83E4GoqjMmMa0S9IqJseIDj4Ypc98E3mKLP6nwBT6szdbD5nw==}
-    engines: {node: '>=12'}
-    peerDependencies:
-      vue: ^3.0.5
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
@@ -2291,6 +2285,10 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
+  v-dropdown-menu@2.0.4:
+    resolution: {integrity: sha512-YPHnx29YWVSdRO8IZcIKNCmSx2jFOkU/5Jyv8pN7P/z2Jif/L6Xto3J29LwIhday1zwMI5sjmU5bNMbBnmdg0A==}
+    engines: {node: '>=12'}
+
   varint@6.0.0:
     resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
 
@@ -2943,10 +2941,6 @@ snapshots:
   '@sideway/pinpoint@2.0.0': {}
 
   '@sinclair/typebox@0.27.8': {}
-
-  '@storinka/dropdown@2.0.2(vue@3.4.38)':
-    dependencies:
-      vue: 3.4.38
 
   '@types/estree@1.0.5': {}
 
@@ -4738,6 +4732,8 @@ snapshots:
   uuid@10.0.0: {}
 
   uuid@8.3.2: {}
+
+  v-dropdown-menu@2.0.4: {}
 
   varint@6.0.0: {}
 

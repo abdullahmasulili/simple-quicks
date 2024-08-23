@@ -91,7 +91,7 @@
 }
 
 .chat__window {
-  overflow-y: auto;
+  overflow-y: scroll;
   flex-grow: 1;
   position: relative;
 
@@ -115,6 +115,24 @@
     position: absolute;
     bottom: 0;
     left: calc(50% - calc(118.64px / 2));
+  }
+
+  .agent-connect__loading {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: $sticker-color-1;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .loading__caption {
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 }
 
@@ -235,6 +253,33 @@
 
     &:hover {
       background-color: $secondary-color;
+    }
+  }
+}
+
+.v-dropdown-menu__container {
+  min-width: 126px;
+  border: 1px solid #bdbdbd;
+  padding: unset;
+  border-radius: 5px;
+
+  .v-dropdown-menu__body {
+    .bubble-action__item {
+      font-size: 14px;
+      font-family: 'Lato', sans-serif;
+      padding-block: 6px;
+      padding-inline: 15px;
+      border-bottom: 1px solid #bdbdbd;
+      cursor: pointer;
+      transition: all 200ms ease-in-out;
+
+      &:last-child {
+        border-bottom: unset;
+      }
+
+      &:hover {
+        background-color: $secondary-color;
+      }
     }
   }
 }

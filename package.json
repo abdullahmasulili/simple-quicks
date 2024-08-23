@@ -14,10 +14,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@storinka/dropdown": "^2.0.2",
     "lato-font": "^3.0.0",
     "pinia": "^2.1.7",
     "uuid": "^10.0.0",
+    "v-dropdown-menu": "^2.0.4",
     "vue": "^3.4.29",
     "vue-ellipse-progress": "^2.1.2",
     "vue-router": "^4.3.3"

@@ -41,15 +41,19 @@ const props = defineProps({
         </p>
         <span class="time">{{ time }}</span>
       </div>
-      <span class="bubble__action" v-s-dropdown-toggle:[bubbleId]>
-        <Icon icon="material-symbols:more-horiz" />
-      </span>
-      <SDropdown :name="bubbleId" theme="light" :align="isPrimary ? 'left' : 'right'">
-        <menu>
-          <li class="bubble-action__item text--color-primary-1">Edit</li>
-          <li class="bubble-action__item text--color-indicator-3">Delete</li>
-        </menu>
-      </SDropdown>
+      <dropdown-menu :overlay="false" :direction="isPrimary ? 'right' : 'left'">
+        <template #trigger>
+          <span class="bubble__action">
+            <Icon icon="material-symbols:more-horiz" />
+          </span>
+        </template>
+        <template #body>
+          <menu>
+            <li class="bubble-action__item text--color-primary-1">Edit</li>
+            <li class="bubble-action__item text--color-indicator-3">Delete</li>
+          </menu>
+        </template>
+      </dropdown-menu>
     </div>
   </div>
 </template>

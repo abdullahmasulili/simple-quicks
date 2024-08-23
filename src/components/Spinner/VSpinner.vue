@@ -30,7 +30,6 @@ const props = defineProps({
 <template>
   <div class="spinner__loading">
     <ve-progress
-      progress
       :loading="isActive"
       :empty-color="trackColor"
       :loader="{ color: thumbColor }"

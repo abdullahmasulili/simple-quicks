@@ -31,18 +31,30 @@ const isLoading = ref(true)
 
 setTimeout(() => {
   isLoading.value = false
-}, 2000)
+}, 1000)
 </script>
 
 <template>
   <div class="content__wrap" v-if="openRoom">
-    <chat-window>
+    <chat-window :is-agent="isAgent">
       <chat-bubble
         :color="isAgent ? 'color-4' : 'color-1'"
         :username="isAgent ? 'FastVisa Support' : 'Mary Hilda'"
         :bubble-id="uuidv4()"
       />
       <chat-bubble is-primary :bubble-id="uuidv4()" />
+      <chat-bubble is-primary :bubble-id="uuidv4()" />
+      <chat-bubble is-primary :bubble-id="uuidv4()" />
+      <chat-bubble
+        :color="isAgent ? 'color-4' : 'color-3'"
+        :username="isAgent ? 'FastVisa Support' : 'Mary Hilda'"
+        :bubble-id="uuidv4()"
+      />
+      <chat-bubble
+        :color="isAgent ? 'color-4' : 'color-3'"
+        :username="isAgent ? 'FastVisa Support' : 'Mary Hilda'"
+        :bubble-id="uuidv4()"
+      />
     </chat-window>
     <compose-message />
   </div>
