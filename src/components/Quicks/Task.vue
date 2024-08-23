@@ -40,6 +40,11 @@ watchEffect(() => {
 function handleDeleteTodo(id) {
   deleteTodo(id)
 }
+
+function handleUpdateTodo(data) {
+  const payload = { ...data, completed: true }
+  updateTodo(payload)
+}
 </script>
 
 <template>
@@ -70,7 +75,9 @@ function handleDeleteTodo(id) {
             v-for="todo in allTodos"
             :key="todo.title"
             :title="todo.title"
+            :is-done="todo.completed"
             @on-delete="handleDeleteTodo(todo.id)"
+            @on-check="handleUpdateTodo(todo)"
           />
         </todo-list>
         <div class="loading__overlay" v-if="loading">

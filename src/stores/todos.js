@@ -6,7 +6,7 @@ export const useTodosStore = defineStore('todos', () => {
   const todos = ref([])
   const loading = ref(false)
   const allTodos = computed(() => todos.value)
-  const isLoading = computed({
+  const setLoading = computed({
     get() {
       return loading.value
     },
@@ -27,19 +27,25 @@ export const useTodosStore = defineStore('todos', () => {
     todos.value = response.data
   }
 
-  async function updateTodo(id, data) {
-    const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${id}`, data)
+  async function updateTodo(data) {
+    setLoading.value = true
+    const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${data.id}`, data)
 
-    todos.value = response.data
+    const todoIndex = todos.value.findIndex((todo) => todo.id === data.id)
+
+    if (todoIndex !== -1) {
+      todos.value.splice(todoIndex, 1, data)
+      setLoading.value = false
+    }
   }
 
   async function deleteTodo(id) {
-    isLoading.value = true
+    setLoading.value = true
     await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
 
     todos.value = todos.value.filter((todo) => todo.id !== id)
-    isLoading.value = false
+    setLoading.value = false
   }
 
-  return { todos, allTodos, getAllTodos, addTodo, updateTodo, deleteTodo, loading, isLoading }
+  return { todos, allTodos, getAllTodos, addTodo, updateTodo, deleteTodo, loading, setLoading }
 })

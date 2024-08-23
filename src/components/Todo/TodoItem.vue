@@ -7,16 +7,20 @@ const props = defineProps({
     type: String,
     default:
       'Set up documentation report for several Cases : Case 145443, Case 192829 and Case 182203'
+  },
+  isDone: {
+    type: Boolean,
+    default: false
   }
 })
 
-const emits = defineEmits(['onDelete'])
+const emits = defineEmits(['onDelete', 'onCheck'])
 </script>
 
 <template>
-  <li class="list__item">
+  <li class="list__item" :class="isDone && 'item--done'">
     <div class="todo__summary">
-      <input class="todo__check" type="checkbox" />
+      <input class="todo__check" type="checkbox" @click="$emit('onCheck')" :checked="isDone" />
       <h2 class="todo__title">
         {{ title }}
       </h2>
