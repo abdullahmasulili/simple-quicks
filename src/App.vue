@@ -17,6 +17,7 @@ const activeQuicks = ref(null)
 const showQuicks = ref(false)
 
 function handleActiveQuicks(quicksName) {
+  handleCloseQuicks()
   activeQuicks.value = quicksName
 
   const quicks = document.querySelectorAll('.fab__wrap:not(.main__fab)')
